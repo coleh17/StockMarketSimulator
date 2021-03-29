@@ -40,9 +40,10 @@ namespace StockMarketSimulator
         /// Creates sell order for current stock
         /// </summary>
         /// <param name="quantity">Quantity of sell</param>
-        public void SellOrder(int quantity)
+        public float SellOrder(int quantity)
         {
             OutstandingShares -= quantity;
+            return this.Price * quantity;
         }
 
         /// <summary>

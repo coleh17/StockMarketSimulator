@@ -54,8 +54,8 @@ namespace StockMarketSimulator
                 throw new InvalidTicker();
             if (quantity < 1)
                 throw new InvalidQuantity();
-            StockList[symbol].SellOrder(quantity);
-            return new Tuple<bool, float>(true, quantity);
+            float total = StockList[symbol].SellOrder(quantity);
+            return new Tuple<bool, float>(true, total);
         }
 
         /// <summary>
@@ -77,6 +77,15 @@ namespace StockMarketSimulator
                 throw new InvalidTicker();
             else
                 return StockList[symbol].GetPrice();
+        }
+
+        public IEnumerable<Stock> GetStocks()
+        {
+            //List<Stock> list = new List<Stock>();
+            //foreach (KeyValuePair<string, Stock> pair in StockList)
+            //    list.Add(pair.Value);
+            return StockList.Values;
+            //return list;
         }
 
     }

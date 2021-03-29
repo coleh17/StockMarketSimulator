@@ -19,6 +19,12 @@ namespace StockMarketSimulator
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Method to check if provided ticker is valid
+        /// Valid ticker: 3-5 upper case letters
+        /// </summary>
+        /// <param name="ticker"></param>
+        /// <returns></returns>
         public static bool IsValidTicker(string ticker)
         {
             return Regex.IsMatch(ticker, @"^[A-Z]{3,5}$");

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockMarketSimulator
 {
-    class Account
+    public class Account
     {
         private Market market;
         private float balance;
