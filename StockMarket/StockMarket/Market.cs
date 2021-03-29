@@ -13,6 +13,19 @@ namespace StockMarketSimulator
             StockList = new Dictionary<string, Stock>();
         }
 
+        public bool AddStock(Stock stock)
+        {
+            if (!StockUtilities.IsValidTicker(stock.Symbol))
+                return false;
+            if (StockList.ContainsKey(stock.Symbol))
+                return false;
+            else
+            {
+                StockList.Add(stock.Symbol, stock);
+                return true;
+            }
+        }
+
         /// <summary>
         /// Executes a buy order for the requested stock
         /// </summary>

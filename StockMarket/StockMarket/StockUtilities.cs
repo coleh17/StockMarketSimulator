@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace StockMarketSimulator
 {
-    static class StockUtilities
+    public static class StockUtilities
     {
-
         /// <summary>
         /// Calculates new stock price based on volume and current price
         /// </summary>
@@ -17,6 +17,11 @@ namespace StockMarketSimulator
             float currPrice = stock.GetPrice();
 
             throw new NotImplementedException();
+        }
+
+        public static bool IsValidTicker(string ticker)
+        {
+            return Regex.IsMatch(ticker, @"^[A-Z]{3,5}$");
         }
 
     }

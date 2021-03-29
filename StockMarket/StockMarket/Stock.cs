@@ -7,7 +7,7 @@ namespace StockMarketSimulator
     public class Stock
     {
         // Stock symbol (3-4 char)
-        private string Symbol;
+        public string Symbol;
         // Current price of stock
         private float Price;
         // Current trade volume
@@ -17,6 +17,8 @@ namespace StockMarketSimulator
 
         public Stock(string _Symbol, int _Price)
         {
+            if (!StockUtilities.IsValidTicker(_Symbol))
+                throw new InvalidTicker();
             Symbol = _Symbol;
             Price = _Price;
             Volume = 0;
@@ -59,6 +61,24 @@ namespace StockMarketSimulator
         public float GetPrice()
         {
             return Price;
+        }
+
+        /// <summary>
+        /// Get current volume
+        /// </summary>
+        /// <returns>int of volume</returns>
+        public int GetVolume()
+        {
+            return Volume;
+        }
+
+        /// <summary>
+        /// Get outstanding shares
+        /// </summary>
+        /// <returns>int of outstanding shares</returns>
+        public int GetOutstandingShares()
+        {
+            return OutstandingShares;
         }
 
     }
