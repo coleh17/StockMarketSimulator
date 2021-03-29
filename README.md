@@ -1,2 +1,2 @@
 # StockMarketSimulator
-Stock market simulator written in C#
+Stock market simulator written in C# (new version)
