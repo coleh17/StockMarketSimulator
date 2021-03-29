@@ -18,15 +18,15 @@ namespace StockMarketSimulator
         /// </summary>
         /// <param name="symbol">Stock ticker to create order</param>
         /// <param name="quantity">Quantity of buy order</param>
-        /// <returns>Tuple with two values: <order successful, number of shares purchased></returns>
+        /// <returns>Tuple with two values: <order successful, total cost></returns>
         public Tuple<bool, float> BuyOrder(string symbol, int quantity)
         {
             if (!StockList.TryGetValue(symbol, out _))
                 throw new InvalidTicker();
             if (quantity < 1)
                 throw new InvalidQuantity();
-            StockList[symbol].BuyOrder(quantity);
-            return new Tuple<bool, float>(true, quantity);
+            float cost = StockList[symbol].BuyOrder(quantity);
+            return new Tuple<bool, float>(true, cost);
         }
 
         /// <summary>
@@ -56,6 +56,14 @@ namespace StockMarketSimulator
                 throw new InvalidTicker();
             else
                 return StockList[symbol];
+        }
+
+        public float GetStockPrice(string symbol)
+        {
+            if (!StockList.TryGetValue(symbol, out _))
+                throw new InvalidTicker();
+            else
+                return StockList[symbol].GetPrice();
         }
 
     }

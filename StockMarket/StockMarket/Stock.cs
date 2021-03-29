@@ -24,13 +24,14 @@ namespace StockMarketSimulator
         }
 
         /// <summary>
-        /// Creates buy order for current stock
+        /// Creates buy order for current stock, returns total cost
         /// </summary>
         /// <param name="quantity">Quantity of purchase</param>
-        public void BuyOrder(int quantity)
+        public float BuyOrder(int quantity)
         {
             Volume += quantity;
             OutstandingShares += quantity;
+            return this.Price * quantity;
         }
 
         /// <summary>

@@ -20,4 +20,11 @@ namespace StockMarketSimulator
         }
 
     }
+
+    struct StockOrder
+    {
+        public string symbol;
+        public int quantity;
+        public DateTime orderDate;
+    }
 }
